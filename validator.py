@@ -24,15 +24,20 @@ for text in extracted_texts:
 
 
 # 「Lv」という文字の、下端のyをMapとして返す。
+# 各ユーザーのデータをグループするためのもの。
 def create_level_and_positionY_map(extracted_texts):
+  lv_text_position_list = {}
+  player_count = 1
+
   for text in extracted_texts:
     if (text.description.startswith('Lv:')):
       # 型を調べる。
-      print(type(text.bounding_poly))
-      vertices = (['({},{})'.format(vertex.x, vertex.y)
-                    for vertex in text.bounding_poly.vertices])
-      return vertices
+      lv_text_position_y = ( [vertex.y for vertex in text.bounding_poly.vertices])
+      lv_text_position_list ['player' + str(player_count)] = max(lv_text_position_y)
+      player_count += 1
 
-result = create_level_and_positionY_map(extracted_texts)
-print(result)
+  return lv_text_position_list
+
+level_position_dictionary = create_level_and_positionY_map(extracted_texts)
+print('lv_text_position_y = ' + level_position_dictionary)
 

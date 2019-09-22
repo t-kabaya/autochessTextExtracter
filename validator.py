@@ -27,9 +27,8 @@ re_katakana = re.compile(r'[\u30A1-\u30F4]+')
 level_position_dictionary = create_level_and_position_y_map(extracted_texts)
 print('lv_text_position_y = ' + json.dumps(level_position_dictionary))
 
+# 処理が複雑になりそうなので、一旦player1の文字列だけ返す。
 def classify_texts_by_player(extracted_texts, level_position_dictionary):
-  result_dictionary = level_position_dictionary
-
   players_text_list = {
     'player1': [],
     'player2': [],
@@ -40,8 +39,23 @@ def classify_texts_by_player(extracted_texts, level_position_dictionary):
     'player7': [],
     'player8': [],
   }
-  user['player1'].append('lol')
-  
+  # user['player1'].append('lol')
+
+  text_of_player1 = []
+  for text in extracted_texts:
+    for vertex in text.bounding_poly.vertices:
+      print(vertex.y)
+      if (vertex.y < level_position_dictionary['player1']):
+        print (vertex.y)
+        text_of_player1.append(text.description)
+
+  print(text_of_player1)
+  return text_of_player1
+
+# フィルターを使ってみる。
+  # text_of_player1 = filter( lambda text: text.bounding_poly.vertices.y < level_position_dictionary['player1'], extracted_texts)
+
+  # print(list(text_of_player1))
   # for text in extracted_texts:
   #   if()
 

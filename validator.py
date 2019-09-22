@@ -59,4 +59,16 @@ def classify_texts_by_player(extracted_texts, level_position_dictionary):
   # for text in extracted_texts:
   #   if()
 
-classify_texts_by_player(extracted_texts, level_position_dictionary)
+classified_result = classify_texts_by_player(extracted_texts, level_position_dictionary)
+
+synergy_name_list = [
+  'ウイングス',
+  'ドワーフ',
+  'ドルイド',
+  'ハンター',
+  'デモンハント'
+]
+
+for maybe_synergy_name in classified_result:
+  if maybe_synergy_name in synergy_name_list:
+    print(maybe_synergy_name)

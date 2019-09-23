@@ -45,20 +45,10 @@ def classify_texts_by_player(extracted_texts, level_position_dictionary):
   text_of_player1 = []
   for text in extracted_texts:
     for vertex in text.bounding_poly.vertices:
-      print(vertex.y)
       if (vertex.y < level_position_dictionary['player1']):
-        print (vertex.y)
-        text_of_player1.append(text.description)
+        players_text_list['player1'].append(text.description)
 
-  print(text_of_player1)
-  return text_of_player1
-
-# フィルターを使ってみる。
-  # text_of_player1 = filter( lambda text: text.bounding_poly.vertices.y < level_position_dictionary['player1'], extracted_texts)
-
-  # print(list(text_of_player1))
-  # for text in extracted_texts:
-  #   if()
+  return players_text_list
 
 classified_result = classify_texts_by_player(extracted_texts, level_position_dictionary)
 

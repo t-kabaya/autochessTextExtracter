@@ -30,8 +30,10 @@ synergy_name_list = [
 
 def filter_by_synergy_name (classified_result):
   # must be  uniq value
-  uniq_classified_result = set(classified_result)
-  for maybe_synergy_name in uniq_classified_result:
-    if maybe_synergy_name in synergy_name_list:
-      print(maybe_synergy_name)
+  for key, value in classified_result.items():
+    print('key' + key)
+    uniq_classified_result = set(value)
+    for maybe_synergy_name in uniq_classified_result:
+      if maybe_synergy_name in synergy_name_list:
+        print(maybe_synergy_name)
  

@@ -10,6 +10,7 @@ def detect_text_uri(uri):
     print('Texts:')
 
     for text in texts:
+        print(text.description)
         print('\n"{}"'.format(text.description))
 
         vertices = (['({},{})'.format(vertex.x, vertex.y)

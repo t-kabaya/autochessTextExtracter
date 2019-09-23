@@ -8,7 +8,7 @@ extracted_texts = detect_text_uri('https://firebasestorage.googleapis.com/v0/b/i
 print(extracted_texts)
 
 # カタカナにマッチ。
-re_katakana = re.compile(r'[\u30A1-\u30F4]+')
+re_katakana = re.compile (r'[\u30A1-\u30F4]+')
 
 level_position_dictionary = create_level_and_position_y_map(extracted_texts)
 
@@ -25,10 +25,14 @@ def classify_texts_by_player(extracted_texts, level_position_dictionary):
     'player8': [],
   }
 
+  # MARGINとは、ユーザーが上のユーザーのシナジーを間違って取得してしまうために入れた数値
+  # しかも、この箇所に置くべきではない。
+  MARGIN = 20
+
   for text in extracted_texts:
     synergy_name = text.description
     for vertex in text.bounding_poly.vertices:
-      y = vertex.y
+      y = vertex.y - MARGIN
       if (y < level_position_dictionary['player1']):
         players_text_list['player1'].append(synergy_name)
       elif (level_position_dictionary['player1'] < y & y < level_position_dictionary['player2'] ):

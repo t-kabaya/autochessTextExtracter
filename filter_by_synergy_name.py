@@ -1,8 +1,8 @@
+# -*- coding: utf-8 -*-
 synergy_name_list = [
-  # クラス
   'ディヴァイン',
-  'アンデット',
-  'スピリット',
+  'アンデッド',
+  'スピリット', 
   'ウイングス',
   'キラ',
   'ケーブ',
@@ -32,6 +32,7 @@ def filter_by_synergy_name (classified_result):
   # must be  uniq value
   for key, value in classified_result.items():
     print(key)
+    print(value)
     uniq_classified_result = set(value)
     for maybe_synergy_name in uniq_classified_result:
       if maybe_synergy_name in synergy_name_list:

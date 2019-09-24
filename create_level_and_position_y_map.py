@@ -9,7 +9,6 @@ def create_level_and_position_y_map(extracted_texts):
 
   for text in extracted_texts:
     if (text.description.startswith('Lv:')):
-      # 型を調べる。
       lv_text_position_y = ( [vertex.y for vertex in text.bounding_poly.vertices])
       lv_text_position_list ['player' + str(player_count)] = max(lv_text_position_y)
       player_count += 1

@@ -1,16 +1,17 @@
-def hello_world(request):
-    """Responds to any HTTP request.
-    Args:
-        request (flask.Request): HTTP request object.
-    Returns:
-        The response text or any set of values that can be turned into a
-        Response object using
-        `make_response <http://flask.pocoo.org/docs/1.0/api/#flask.Flask.make_response>`.
-    """
-    request_json = request.get_json()
-    if request.args and 'message' in request.args:
-        return request.args.get('message')
-    elif request_json and 'message' in request_json:
-        return request_json['message']
-    else:
-        return f'Hello World!'
+from extract_text_from_image import detect_text_uri
+from create_level_and_position_y_map import create_level_and_position_y_map
+from filter_by_synergy_name import filter_by_synergy_name
+from classify_texts_by_player import classify_texts_by_player
+
+image_uri = 'https://firebasestorage.googleapis.com/v0/b/ipgpushnotifmasterserver.appspot.com/o/Screenshot_20190917-101012.jpg?alt=media&token=bb3fa819-ebfa-41db-84ed-1faa4083f1e2'
+
+def index:
+  extracted_texts = detect_text_uri(image_uri)
+  # use lv position as player position y
+  level_position_dictionary = create_level_and_position_y_map(extracted_texts)
+  classified_result = classify_texts_by_player(extracted_texts, level_position_dictionary)
+
+  # TMP: show results in console
+  response = filter_by_synergy_name(classified_result)
+
+  return response

@@ -5,7 +5,8 @@ from classify_texts_by_player import classify_texts_by_player
 
 image_uri = 'https://firebasestorage.googleapis.com/v0/b/ipgpushnotifmasterserver.appspot.com/o/Screenshot_20190917-101012.jpg?alt=media&token=bb3fa819-ebfa-41db-84ed-1faa4083f1e2'
 
-def index(request):
+def create_synergy_text(image_uri):
+
   extracted_texts = detect_text_uri(image_uri)
   # use lv position as player position y
   level_position_dictionary = create_level_and_position_y_map(extracted_texts)
@@ -16,6 +17,6 @@ def index(request):
 
   return response
 
-# データ構造がどのようになっているかの確認。
-def debug_just_return_request_as_response(request):
-  return request
+
+synergy_texts = create_synergy_text(image_uri) 
+print(synergy_texts)

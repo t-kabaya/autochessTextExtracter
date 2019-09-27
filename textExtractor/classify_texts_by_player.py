@@ -1,4 +1,3 @@
-# 処理が複雑になりそうなので、一旦player1の文字列だけ返す。
 def classify_texts_by_player(extracted_texts, level_position_dictionary):
   players_text_list = {
     'player1': [],
@@ -12,7 +11,8 @@ def classify_texts_by_player(extracted_texts, level_position_dictionary):
   }
 
   # MARGINとは、ユーザーが上のユーザーのシナジーを間違って取得してしまうために入れた数値
-  # しかも、この箇所に置くべきではない。
+  # しかも、このファイルに置くべきではない。
+  # TODO: リファクタリングする。そもそもこのコードは未完成
   MARGIN = 20
 
   for text in extracted_texts:

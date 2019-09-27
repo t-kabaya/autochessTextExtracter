@@ -1,8 +1,5 @@
 # 「Lv」という文字の、下端のyをMapとして返す。
 # 各ユーザーのデータをグループするためのもの。
-
-MARGIN = 20
-
 def create_level_and_position_y_map(extracted_texts):
   lv_text_position_list = {}
   player_count = 1

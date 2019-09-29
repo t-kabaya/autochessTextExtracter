@@ -15,9 +15,11 @@ app.config['JSON_AS_ASCII'] = False
 def extract_text_from_autochess_image():
   try:
     image_uri = request.args.get('image_uri')
+    if image_uri is None:
+      return 'image_uriパラメーターが必要です。'
     
     response = create_synergy_text(image_uri)
 
     return jsonify(response)
   except:
-    return 'エラー　もう一度試してみてね'
+    return 'エラー　autochessの画像を投稿してください'

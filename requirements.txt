@@ -2,15 +2,20 @@ beautifulsoup4==4.7.1
 cachetools==3.1.1
 certifi==2019.3.9
 chardet==3.0.4
+Click==7.0
 cycler==0.10.0
+Flask==1.1.1
 google-api-core==1.14.2
 google-auth==1.6.3
 google-cloud-vision==0.39.0
 googleapis-common-protos==1.6.0
 grpcio==1.23.0
 idna==2.8
+itsdangerous==1.1.0
+Jinja2==2.10.1
 joblib==0.13.2
 kiwisolver==1.1.0
+MarkupSafe==1.1.1
 matplotlib==3.1.1
 numpy==1.17.1
 opencv-python==4.1.0.25
@@ -34,3 +39,4 @@ soupsieve==1.9.1
 torch==1.2.0
 torchvision==0.4.0
 urllib3==1.25.3
+Werkzeug==0.16.0

@@ -3,8 +3,6 @@ from create_level_and_position_y_map import create_level_and_position_y_map
 from filter_by_synergy_name import filter_by_synergy_name
 from classify_texts_by_player import classify_texts_by_player
 
-image_uri = 'https://firebasestorage.googleapis.com/v0/b/ipgpushnotifmasterserver.appspot.com/o/Screenshot_20190917-101012.jpg?alt=media&token=bb3fa819-ebfa-41db-84ed-1faa4083f1e2'
-
 def create_synergy_text(image_uri):
 
   extracted_texts = detect_text_uri(image_uri)
@@ -16,7 +14,3 @@ def create_synergy_text(image_uri):
   response = filter_by_synergy_name(classified_result)
 
   return response
-
-
-synergy_texts = create_synergy_text(image_uri) 
-print(synergy_texts)

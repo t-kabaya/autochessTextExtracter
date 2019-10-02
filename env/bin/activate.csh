@@ -8,7 +8,11 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
+<<<<<<< HEAD
 setenv VIRTUAL_ENV "/Users/ipg/kbyProject/textExtractionAutochess/env"
+=======
+setenv VIRTUAL_ENV "/home/taikikabaya/autochessTextExtracter/env"
+>>>>>>> cb588a63ac69a5f96fe97fffa71f18919a38394c
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/bin:$PATH"

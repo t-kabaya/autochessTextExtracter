@@ -37,7 +37,11 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
+<<<<<<< HEAD
 VIRTUAL_ENV="/Users/ipg/kbyProject/textExtractionAutochess/env"
+=======
+VIRTUAL_ENV="/home/taikikabaya/autochessTextExtracter/env"
+>>>>>>> cb588a63ac69a5f96fe97fffa71f18919a38394c
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

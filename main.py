@@ -3,6 +3,7 @@ from flask import Flask
 from flask import jsonify
 from flask import request
 from index import create_synergy_text
+from error import Error
 
 app = Flask(__name__)
 # 文字化け防止。flaskは、defaultではutf8をサポートしない。
@@ -16,15 +17,26 @@ app.config['JSON_AS_ASCII'] = False
 @app.route("/")
 def extract_text_from_autochess_image():
   try:
+    raise Error('This view is gone', status_code=410)
+
     image_uri = request.args.get('image_uri')
     if image_uri is None:
-      return 'image_uriパラメーターが必要です。'
-    
+      raise Error('image_uriパラメーターが必要です', status_code=410)
+        return 'image_uriパラメーターが必要です。'
+      
     response = create_synergy_text(image_uri)
 
     return jsonify(response)
   except:
-    return 'エラー　autochessの画像を投稿してください'
+    raise Error('エラー　もうしばらくしてからもう一度お試しください', status_code=410)
+
+
+# 例外処理
+@app.errorhandler(Error)
+def handle_invalid_usage(error):
+    response = jsonify(error.to_dict())
+    response.status_code = error.status_code
+    return response
 
 if __name__ == '__main__':
   # This is used when running locally only. When deploying to Google App

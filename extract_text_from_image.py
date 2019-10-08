@@ -1,6 +1,6 @@
 from google.cloud import vision
 
-def detect_text_uri(image_uri):
+def post_image_to_cloud_vision_api(image_uri):
     client = vision.ImageAnnotatorClient()
     image = vision.types.Image()
     image.source.image_uri = image_uri

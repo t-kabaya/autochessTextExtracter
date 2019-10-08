@@ -16,20 +16,13 @@ app.config['JSON_AS_ASCII'] = False
 # GET param: image_uri: string
 @app.route("/")
 def extract_text_from_autochess_image():
-  try:
-    raise Error('This view is gone', status_code=410)
+  image_uri = request.args.get('image_uri')
+  if image_uri is None:
+    raise Error('image_uriパラメーターが必要です', status_code=410)
+    
+  response = create_synergy_text(image_uri)
 
-    image_uri = request.args.get('image_uri')
-    if image_uri is None:
-      raise Error('image_uriパラメーターが必要です', status_code=410)
-        return 'image_uriパラメーターが必要です。'
-      
-    response = create_synergy_text(image_uri)
-
-    return jsonify(response)
-  except:
-    raise Error('エラー　もうしばらくしてからもう一度お試しください', status_code=410)
-
+  return jsonify(response)
 
 # 例外処理
 @app.errorhandler(Error)
@@ -39,8 +32,5 @@ def handle_invalid_usage(error):
     return response
 
 if __name__ == '__main__':
-  # This is used when running locally only. When deploying to Google App
-  # Engine, a webserver process such as Gunicorn will serve the app. This
-  # can be configured by adding an `entrypoint` to app.yaml.
   app.run(host='127.0.0.1', port=8080, debug=True)
 # [END gae_python37_app]
